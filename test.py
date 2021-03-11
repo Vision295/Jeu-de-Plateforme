@@ -16,9 +16,8 @@ running = True
 # BOUCLE DE JEU
 while running:
 
-    for i in range(16):
-        Terrain.Grass.pink(i * 48, 528)
-
+    for i in range(17):
+        Terrain.Brick.small(i * 44, 528)
     pg.display.flip()
 
     # On utilise les inputs avec pygame
