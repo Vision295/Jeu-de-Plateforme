@@ -1,6 +1,7 @@
 import pygame as pg
 from Background.main import Background as Bg
 from Terrain.main import Terrain
+from Main_Character.idle import Idle
 
 # INITIALISATION DE PYGAME
 pg.init()
@@ -18,6 +19,7 @@ while running:
 
     for i in range(24):
         Terrain.Grass.green(i * 44, 748)
+    Idle.ninja_frog(10, 100, 0)
     pg.display.flip()
 
     # On utilise les inputs avec pygame
