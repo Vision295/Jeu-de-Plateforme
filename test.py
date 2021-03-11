@@ -6,7 +6,7 @@ from Terrain.main import Terrain
 pg.init()
 
 # On charge l'écran dans la variable screen
-screen = pg.display.set_mode((1056, 792))
+screen = pg.display.set_mode((1056, 704))
 Bg.load_random_background()
 
 # INITIALISATION DE TOUTES LES VARIABLES

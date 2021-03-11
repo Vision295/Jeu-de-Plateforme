@@ -5,7 +5,7 @@ from Background.main import Background as Bg
 pg.init()
 
 # On charge l'écran dans la variable screen
-screen = pg.display.set_mode((1056, 792))
+screen = pg.display.set_mode((1056, 704))
 # 792 = 3 * 3 * 2 * 2 * 2 * 11
 # 792 = 44 * 18
 # 1056 = 3 * 2 * 2 * 2 * 2 * 2 * 11
