@@ -1,6 +1,6 @@
 import pygame as pg
 from Background.main import Background as Bg
-from main import Terrain
+from Terrain.main import Terrain
 from Spike.spike import Spike
 
 # INITIALISATION DE PYGAME

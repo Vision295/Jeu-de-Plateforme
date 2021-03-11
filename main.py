@@ -4,8 +4,6 @@ from Background.main import Background as Bg
 # INITIALISATION DE PYGAME
 pg.init()
 
-# test
-
 # On charge l'écran dans la variable screen
 screen = pg.display.set_mode((768, 576))
 # 576 = 3 * 3 * 2 * 2 * 2 * 2

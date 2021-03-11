@@ -1,11 +1,12 @@
 import pygame as pg
 from Background.main import Background as Bg
+from Terrain.main import Terrain
 
 # INITIALISATION DE PYGAME
 pg.init()
 
 # On charge l'écran dans la variable screen
-screen = pg.display.set_mode((1280, 800))
+screen = pg.display.set_mode((768, 576))
 Bg.load_random_background()
 
 # INITIALISATION DE TOUTES LES VARIABLES
@@ -15,8 +16,8 @@ running = True
 # BOUCLE DE JEU
 while running:
 
-    Bg.Outline.stone(100, 100, True)
-
+    for i in range(16):
+        Terrain.Grass.pink(i * 48, 528)
 
     pg.display.flip()
 
