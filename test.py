@@ -6,7 +6,7 @@ from Terrain.main import Terrain
 pg.init()
 
 # On charge l'écran dans la variable screen
-screen = pg.display.set_mode((768, 576))
+screen = pg.display.set_mode((1056, 792))
 Bg.load_random_background()
 
 # INITIALISATION DE TOUTES LES VARIABLES
@@ -16,8 +16,8 @@ running = True
 # BOUCLE DE JEU
 while running:
 
-    for i in range(17):
-        Terrain.Brick.small(i * 44, 528)
+    for i in range(24):
+        Terrain.Grass.green(i * 44, 748)
     pg.display.flip()
 
     # On utilise les inputs avec pygame

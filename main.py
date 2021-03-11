@@ -5,11 +5,11 @@ from Background.main import Background as Bg
 pg.init()
 
 # On charge l'écran dans la variable screen
-screen = pg.display.set_mode((768, 576))
-# 576 = 3 * 3 * 2 * 2 * 2 * 2
-# 576 = 48 * 12 et 576 = 64 * 9
-# 768 = 3 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2
-# 768 = 48 * 16 et 768 = 64 * 12
+screen = pg.display.set_mode((1056, 792))
+# 792 = 3 * 3 * 2 * 2 * 2 * 11
+# 792 = 44 * 18
+# 1056 = 3 * 2 * 2 * 2 * 2 * 2 * 11
+# 1056 = 11 * 96 et 768 = 64 * 16.5
 Bg.load_random_background()
 
 # INITIALISATION DE TOUTES LES VARIABLES
