@@ -20,18 +20,10 @@ while running:
     for i in range(12, 24):
         Terrain.Grass.green(i * 44, 748)
 
-    #Idle.ninja_frog(100, 100, 1)
-    Idle.ninja_frog(100, 100, 2)
-    #Idle.ninja_frog(100, 100, 3)
-    #Idle.ninja_frog(100, 100, 4)
-    #Idle.ninja_frog(100, 100, 5)
-    #Idle.ninja_frog(100, 100, 6)
-    #Idle.ninja_frog(100, 100, 7)
-    #Idle.ninja_frog(100, 100, 8)
-    #Idle.ninja_frog(100, 100, 9)
-    #Idle.ninja_frog(100, 100, 10)
-    #Idle.ninja_frog(100, 100, 11)
-    pg.display.flip()
+    for i in range(1000):
+        Idle.ninja_frog(10 * i, 100, i)
+        pg.time.wait(100)
+        pg.display.flip()
 
     # On utilise les inputs avec pygame
     for event in pg.event.get():
