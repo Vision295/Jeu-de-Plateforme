@@ -22,11 +22,7 @@ while running:
         Terrain.Grass.green(i * 44, 748)
 
     for y in range(1000):
-        for i in range(11):
-            NinjaFrog.idle(10, 100, i)
-            pg.display.flip()
-            pygame.time.wait(10)
-        Bg.load_background()
+        NinjaFrog.loop_idle()
         pg.display.flip()
 
     # On utilise les inputs avec pygame
