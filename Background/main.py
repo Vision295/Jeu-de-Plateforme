@@ -36,6 +36,13 @@ class Background:
             for y in range(0, 896, 64):
                 screen.blit(a, (x, y))
 
+    # Fonction pour charger le fond d'écran aléatoirement
+    @staticmethod
+    def load_background():
+        for x in range(0, 1280, 64):
+            for y in range(0, 896, 64):
+                screen.blit(Background.yellow, (x, y))
+
     Stone = Stone()
 
     Wood = Wood()
