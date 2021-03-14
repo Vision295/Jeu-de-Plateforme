@@ -77,12 +77,12 @@ class Idle:
             screen.blit(image, (x, y), (320, 0, 32, 32))
             return x, x + 32, y, y + 32
 
-        # fonction pour afficher le personnage bouger lorsqu'il est inactif
-        @staticmethod
-        def loop_idle(nbloop=1):
-            for j in range(nbloop):
-                for i in range(11):
-                    Idle.idle(10, 100, i)
-                    pygame.display.flip()
-                    pygame.time.wait(10)
-                Bg.load_background()
+    # fonction pour afficher le personnage bouger lorsqu'il est inactif
+    @staticmethod
+    def loop_idle(nbloop=1):
+        for j in range(nbloop):
+            for i in range(11):
+                Idle.idle(10, 100, i)
+                pygame.display.flip()
+                pygame.time.wait(10)
+            Bg.load_background()

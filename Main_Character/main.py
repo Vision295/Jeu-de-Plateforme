@@ -1,5 +1,5 @@
 import pygame
-from Idle import Idle
+from Main_Character.Idle import Idle
 
 screen = pygame.display.set_mode((1056, 792))
 
