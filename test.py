@@ -6,7 +6,7 @@ from Main_Character.main import NinjaFrog
 # INITIALISATION DE PYGAME
 pg.init()
 
-# On charge l'ecran dans la variable screen
+# On charge l'écran dans la variable screen
 screen = pg.display.set_mode((1056, 704))
 Bg.load_random_background()
 
