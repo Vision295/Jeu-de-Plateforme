@@ -1,9 +1,7 @@
-import pygame as pg #CHIEN V2
+import pygame as pg
 from Background.main import Background as Bg
 from Terrain.main import Terrain
 from Main_Character.main import NinjaFrog
-
-# caca 1
 
 # INITIALISATION DE PYGAME
 pg.init()
@@ -33,5 +31,3 @@ while running:
         if event.type == pg.QUIT:
             running = False
             pg.quit()
-
-#pipi ^^
