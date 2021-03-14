@@ -1,4 +1,4 @@
-import pygame as pg
+import pygame as pg #CHIEN
 from Background.main import Background as Bg
 from Terrain.main import Terrain
 from Main_Character.main import NinjaFrog
@@ -11,7 +11,7 @@ screen = pg.display.set_mode((1056, 704))
 Bg.load_random_background()
 
 # INITIALISATION DE TOUTES LES VARIABLES
-# Variable utilisée pour faire tuourner le jeu en boucle
+# Variable utilisée pour faire tourner le jeu en boucle
 running = True
 
 # BOUCLE DE JEU
