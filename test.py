@@ -3,8 +3,6 @@ from Background.main import Background as Bg
 from Terrain.main import Terrain
 from Main_Character.main import NinjaFrog
 
-# caca
-
 # INITIALISATION DE PYGAME
 pg.init()
 
@@ -33,5 +31,3 @@ while running:
         if event.type == pg.QUIT:
             running = False
             pg.quit()
-
-#pipi ^^
