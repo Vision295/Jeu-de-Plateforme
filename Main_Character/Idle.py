@@ -4,7 +4,8 @@ from Background.main import Background as Bg
 screen = pygame.display.set_mode((1056, 792))
 
 
-class NinjaFrog:
+# classe pour afficher le joueur lorsqu'il est inactif
+class Idle:
 
     # fonction qui afficher le joueur lorsque ce dernier ne bouge pas
     @staticmethod
@@ -76,10 +77,11 @@ class NinjaFrog:
             screen.blit(image, (x, y), (320, 0, 32, 32))
             return x, x + 32, y, y + 32
 
-    @staticmethod
-    def loop_idle():
-        for i in range(11):
-            NinjaFrog.idle(10, 100, i)
-            pygame.display.flip()
-            pygame.time.wait(10)
-        Bg.load_background()
+        # fonction pour afficher le personnage bouger lorsqu'il est inactif
+        def loop_idle(nbloop=1):
+            for j in range(nbloop):
+                for i in range(11):
+                    Idle.idle(10, 100, i)
+                    pygame.display.flip()
+                    pygame.time.wait(10)
+                Bg.load_background()

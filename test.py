@@ -1,8 +1,7 @@
 import pygame as pg
-import pygame as pygame
 from Background.main import Background as Bg
 from Terrain.main import Terrain
-from Main_Character.idle import NinjaFrog
+from Main_Character.main import NinjaFrog
 
 # INITIALISATION DE PYGAME
 pg.init()
@@ -22,7 +21,7 @@ while running:
         Terrain.Grass.green(i * 44, 748)
 
     for y in range(1000):
-        NinjaFrog.loop_idle()
+        NinjaFrog.Idle.loop_idle()
         pg.display.flip()
 
     # On utilise les inputs avec pygame
