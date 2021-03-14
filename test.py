@@ -1,4 +1,4 @@
-import pygame as pg #CHIEN
+import pygame as pg #CHIEN V2
 from Background.main import Background as Bg
 from Terrain.main import Terrain
 from Main_Character.main import NinjaFrog
