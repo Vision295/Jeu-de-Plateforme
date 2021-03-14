@@ -1,5 +1,4 @@
 import pygame
-from Background.main import Background as Bg
 
 screen = pygame.display.set_mode((1056, 792))
 
