@@ -3,10 +3,7 @@ from Background.main import Background as Bg
 from Terrain.main import Terrain
 from Main_Character.main import NinjaFrog
 
-# caca 1
-# caca 2
-# caca 3
-# caca 4
+# caca
 
 # INITIALISATION DE PYGAME
 pg.init()
