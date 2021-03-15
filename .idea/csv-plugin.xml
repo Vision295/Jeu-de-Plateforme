@@ -17,7 +17,21 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Main_Character\fall.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Main_Character\idle.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Main_Character\run.py">
           <value>
             <Attribute>
               <option name="separator" value="," />

@@ -1,4 +1,5 @@
 import pygame
+from Background.main import Background as Bg
 
 screen = pygame.display.set_mode((1056, 792))
 
@@ -8,6 +9,7 @@ class Jump:
 
     @staticmethod
     def jump(x, y):
+        Bg.Load.lvl_1()
         image = pygame.image.load('Assets/Main-Characters/Ninja-Frog/Jump (32x32).png')
         screen.blit(image, (x, y), (0, 0, 32, 32))
         return x, x + 32, y, y + 32

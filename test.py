@@ -19,19 +19,19 @@ while running:
 
     for i in range(12, 24):
         Terrain.Grass.green(i * 44, 748)
-    a = 0
-    for y in range(1000):
+
+    for y in range(1):
+        NinjaFrog.Run.loop_run(10, 10)
+        pg.display.flip()
+    NinjaFrog.Jump.jump(10, 10)
+    pg.display.flip()
+    pg.time.wait(150)
+    NinjaFrog.Fall.fall(10, 10)
+    pg.display.flip()
+    pg.time.wait(700)
+    for y in range(5):
         NinjaFrog.Idle.loop_idle(10, 10)
         pg.display.flip()
-        a += 1
-        if a % 4 == 1:
-            NinjaFrog.Jump.jump(10, 10)
-            pg.display.flip()
-            pg.time.wait(400)
-        elif a % 4 == 3:
-            NinjaFrog.Fall.fall(10, 10)
-            pg.display.flip()
-            pg.time.wait(400)
 
     # On utilise les inputs avec pygame
     for event in pg.event.get():
