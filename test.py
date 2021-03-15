@@ -28,6 +28,10 @@ while running:
             NinjaFrog.Jump.jump(10, 10)
             pg.display.flip()
             pg.time.wait(400)
+        elif a % 4 == 3:
+            NinjaFrog.Fall.fall(10, 10)
+            pg.display.flip()
+            pg.time.wait(400)
 
     # On utilise les inputs avec pygame
     for event in pg.event.get():
