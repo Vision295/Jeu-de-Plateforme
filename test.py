@@ -1,7 +1,6 @@
 import pygame as pg
 from Background.main import Background as Bg
 from Terrain.main import Terrain
-from Main_Character.main import NinjaFrog
 from Dynamics.var import var
 from Dynamics.main import Dynamics
 
@@ -25,15 +24,12 @@ while running:
     Dynamics.fall()
     Dynamics.idle()
     var.j += 1
+    var.i += 1
 
     for i in range(12, 24):
         Terrain.Grass.green(i * 44, 748)
 
     pg.display.flip()
-    """
-    NinjaFrog.Jump.loop_jump(100, 100)
-    NinjaFrog.Fall.loop_fall(100, 100)
-    NinjaFrog.Idle.loop_idle(100, 100)"""
 
     # On utilise les inputs avec pygame
     for event in pg.event.get():

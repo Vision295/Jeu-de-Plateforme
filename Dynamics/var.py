@@ -6,6 +6,7 @@ screen = pygame.display.set_mode((1056, 792))
 class var:
 
     j = 0
+    i = 0
     run = False
     jump = False
     fall = False
