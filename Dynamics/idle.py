@@ -8,5 +8,5 @@ screen = pg.display.set_mode((1056, 792))
 def idle():
 
     if not var.fall and not var.jump and not var.run:
-        NinjaFrog.Idle.idle(var.x, var.y, var.i)
+        NinjaFrog.Idle.idle(var.x, var.y, var.step_idle)
         pg.time.wait(40)

@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Dynamics\fall.py">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Dynamics\idle.py">
           <value>
             <Attribute>
@@ -18,6 +25,13 @@
           </value>
         </entry>
         <entry key="\Dynamics\jump.py">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Dynamics\run.py">
           <value>
             <Attribute>
               <option name="separator" value=":" />
@@ -46,6 +60,13 @@
           </value>
         </entry>
         <entry key="\Main_Character\idle.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Main_Character\jump.py">
           <value>
             <Attribute>
               <option name="separator" value="," />

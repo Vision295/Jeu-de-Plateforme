@@ -23,8 +23,8 @@ while running:
     Dynamics.run()
     Dynamics.fall()
     Dynamics.idle()
-    var.j += 1
-    var.i += 1
+    var.step_run += 1
+    var.step_idle += 1
 
     for i in range(12, 24):
         Terrain.Grass.green(i * 44, 748)
