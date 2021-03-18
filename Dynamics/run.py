@@ -56,6 +56,7 @@ def run():
             var.x -= 5
 
     # Si l'utilisateur ne cours pas ou bien appuie sur les deux f=touches (flèche droite et gauche)
-    elif not var.pressed.get(pg.K_RIGHT) and not var.pressed.get(pg.K_LEFT) or var.pressed.get(pg.K_RIGHT) and var.pressed.get(pg.K_LEFT):
+    elif not var.pressed.get(pg.K_RIGHT) and not var.pressed.get(pg.K_LEFT) or not (
+            not var.pressed.get(pg.K_RIGHT) or not var.pressed.get(pg.K_LEFT)):
         var.run = False
         var.step_run = 0
