@@ -38,5 +38,9 @@ def jump():
 
         # Si le joueur cours en même temps qu'il saute alors il avance légèrement
         if var.run and var.jump:
-            var.x += 2
-            var.run = False
+            if var.left:
+                var.x -= 3
+                var.run = False
+            else:
+                var.x += 3
+                var.run = False

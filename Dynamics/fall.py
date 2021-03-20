@@ -27,3 +27,12 @@ def fall():
         if var.height == - 40:
             var.fall = False
             var.height = 0
+
+        # Si le joueur cours en même temps qu'il saute alors il avance légèrement
+        if var.run and var.fall:
+            if var.left:
+                var.x -= 6
+                var.run = False
+            else:
+                var.x += 6
+                var.run = False

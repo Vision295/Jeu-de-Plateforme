@@ -25,11 +25,15 @@ def run():
             # Petit lag pour rendre le jeu plus fluide
             pg.time.wait(40)
 
-        # Si l'utilisateur dépasse l'écran
-        if var.x > 1024:
-            var.x = 0
+            # Si l'utilisateur dépasse l'écran
+            if var.x > 1024:
+                var.x = 0
+            else:
+                var.x += 5
         else:
-            var.x += 5
+            # On cours
+            var.run = True
+            var.left = False
 
     # Si dans le dictionnaire on trouve l'input correspondant à la flèche de gauche à True
 
@@ -49,11 +53,16 @@ def run():
             # Petit lag pour rendre le jeu plus fluide
             pg.time.wait(40)
 
-        # Si l'utilisateur dépasse l'écran
-        if var.x < 0:
-            var.x = 1024
+            # Si l'utilisateur dépasse l'écran
+            if var.x < 0:
+                var.x = 1024
+            else:
+                var.x -= 5
+
         else:
-            var.x -= 5
+            # On cours
+            var.run = True
+            var.left = True
 
     # Si l'utilisateur ne cours pas ou bien appuie sur les deux f=touches (flèche droite et gauche)
     elif not var.pressed.get(pg.K_RIGHT) and not var.pressed.get(pg.K_LEFT) or not (
