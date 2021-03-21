@@ -21,7 +21,7 @@ def fall():
         pg.display.flip()
 
         # petit lag pour rendre le jeu plus fluide
-        pg.time.wait(40)
+        pg.time.wait(20)
 
         # Si le joueur a fini sa chute
         if Var.height == - 40:

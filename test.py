@@ -2,6 +2,7 @@ import pygame as pg
 from Background.main import Background as Bg
 from Dynamics.var import Var
 from Dynamics.main import Dynamics
+from variables import Variables
 
 # INITIALISATION DE PYGAME
 pg.init()
@@ -17,6 +18,7 @@ running = True
 # BOUCLE DE JEU
 while running:
 
+    Variables.clock.tick(Variables.FPS)
     Bg.Load.lvl_1()
     Dynamics.jump()
     Dynamics.run()

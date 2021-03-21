@@ -1,6 +1,8 @@
 import pygame as pg
 from Background.main import Background as Bg
-
+from Dynamics.var import Var
+from Dynamics.main import Dynamics
+from variables import Variables
 # INITIALISATION DE PYGAME
 pg.init()
 
@@ -28,12 +30,10 @@ Background > Wood > square
 Terrain > Stone > Rect/Platform > gold
 """
 
-print('je test GitHub')
-
 # BOUCLE DE JEU
 while running:
 
-    pg.display.flip()
+    Variables.clock.tick(Variables.FPS)
 
     # On utilise les inputs avec pygame
     for event in pg.event.get():

@@ -3,12 +3,16 @@ import pygame
 screen = pygame.display.set_mode((1056, 792))
 
 
-class Var:
+class Variables:
 
     # Variables utilisées pour le déplacement du joueur (stockée dans un fichier à part pour pouvoir y
     # accéder facilement depuis un autre fichier)
     step_run = 0
     step_idle = 0
+
+    # fps du jeu
+    FPS = 30
+    clock = pygame.time.Clock()
 
     # Booléens pour connaitre l'etat du joueur
     run = False

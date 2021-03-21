@@ -34,7 +34,7 @@ def jump():
             pg.display.flip()
 
             # Petit lag de 40 ms pour rendre le jeu plus fluide
-            pg.time.wait(40)
+            pg.time.wait(20)
 
         # Si le joueur cours en même temps qu'il saute alors il avance légèrement
         if Var.run and Var.jump:
