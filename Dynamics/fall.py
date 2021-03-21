@@ -1,6 +1,6 @@
 import pygame as pg
 from Main_Character.main import NinjaFrog
-from Dynamics.var import var
+from Dynamics.var import Var
 
 screen = pg.display.set_mode((1056, 792))
 
@@ -8,31 +8,31 @@ screen = pg.display.set_mode((1056, 792))
 def fall():
 
     # Si le joueur est en train de tomber
-    if var.fall:
+    if Var.fall:
 
         # le joueur poursuit sa chute
-        var.y += 10
-        var.height -= 10
+        Var.y += 10
+        Var.height -= 10
 
-        if not var.left:
-            NinjaFrog.Fall.fall_right(var.x, var.y)
+        if not Var.left:
+            NinjaFrog.Fall.fall_right(Var.x, Var.y)
         else:
-            NinjaFrog.Fall.fall_left(var.x, var.y)
+            NinjaFrog.Fall.fall_left(Var.x, Var.y)
         pg.display.flip()
 
         # petit lag pour rendre le jeu plus fluide
         pg.time.wait(40)
 
         # Si le joueur a fini sa chute
-        if var.height == - 40:
-            var.fall = False
-            var.height = 0
+        if Var.height == - 40:
+            Var.fall = False
+            Var.height = 0
 
         # Si le joueur cours en même temps qu'il saute alors il avance légèrement
-        if var.run and var.fall:
-            if var.left:
-                var.x -= 6
-                var.run = False
+        if Var.run and Var.fall:
+            if Var.left:
+                Var.x -= 6
+                Var.run = False
             else:
-                var.x += 6
-                var.run = False
+                Var.x += 6
+                Var.run = False

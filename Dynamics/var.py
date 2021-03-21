@@ -1,9 +1,10 @@
 import pygame
+from Background.main import Background
 
 screen = pygame.display.set_mode((1056, 792))
 
 
-class var:
+class Var:
 
     # Variables utilisées pour le déplacement du joueur (stockée dans un fichier à part pour pouvoir y
     # accéder facilement depuis un autre fichier)
@@ -26,4 +27,5 @@ class var:
     # dico utilisée pour stocker les inputs
     pressed = {}
 
-
+    # dico utilisé pour stocker toutes les collisions de la map
+    collision = {}

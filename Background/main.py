@@ -2,6 +2,9 @@ import pygame
 from random import *
 from Background.stone import Stone
 from Background.wood import Wood
+from Terrain.main import Terrain
+from Dynamics.var import Var
+
 
 # On charge l'écran
 screen = pygame.display.set_mode((1280, 800))
@@ -43,6 +46,8 @@ class Background:
             for x in range(0, 1280, 64):
                 for y in range(0, 896, 64):
                     screen.blit(Background.yellow, (x, y))
+            for i in range(24):
+                Var.collision[i] = Terrain.Grass.green(i * 44, 660)
 
     Stone = Stone()
 

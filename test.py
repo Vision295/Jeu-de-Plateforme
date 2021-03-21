@@ -1,7 +1,6 @@
 import pygame as pg
 from Background.main import Background as Bg
-from Terrain.main import Terrain
-from Dynamics.var import var
+from Dynamics.var import Var
 from Dynamics.main import Dynamics
 
 # INITIALISATION DE PYGAME
@@ -23,11 +22,8 @@ while running:
     Dynamics.run()
     Dynamics.fall()
     Dynamics.idle()
-    var.step_run += 1
-    var.step_idle += 1
-
-    for i in range(12, 24):
-        Terrain.Grass.green(i * 44, 748)
+    Var.step_run += 1
+    Var.step_idle += 1
 
     pg.display.flip()
 
@@ -42,9 +38,9 @@ while running:
         # Si l'utilisateur maintiens une touche appuyée
         elif event.type == pg.KEYDOWN:
             # On met la valeur de clé correspondante à l'input entré à True
-            var.pressed[event.key] = True
+            Var.pressed[event.key] = True
 
         # Si l'utilisateur lève une touche
         elif event.type == pg.KEYUP:
             # On met la valeur de clé correspondante à l'input entré à False
-            var.pressed[event.key] = False
+            Var.pressed[event.key] = False
