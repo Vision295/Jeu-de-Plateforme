@@ -1,4 +1,5 @@
 import pygame
+from game import Game
 
 screen = pygame.display.set_mode((1280, 800))
 
@@ -17,34 +18,37 @@ class BigSquare:
     # taille du grand carré
     taille = (32, 32)
 
-    # affiche sur l'écran un grand bloc de pierre en pierre aux coordonnées (x, y)
-    @staticmethod
-    def roc(x, y):
-        surf = pygame.Surface((32, 32))
-        surf.blit(pygame.image.load('Assets/Terrain/Terrain (16x16).png'), (-208, -16))
-        screen.blit(surf, (x, y))
-        return x, x + 32, y, y + 32
+    # fonction pour créer un block
+    def __init__(self, x, y, materiau='roc'):
 
-    # affiche sur l'écran un grand bloc de pierre en fer aux coordonnées (x, y)
-    @staticmethod
-    def iron(x, y):
-        surf = pygame.Surface((32, 32))
-        surf.blit(pygame.image.load('Assets/Terrain/Terrain (16x16).png'), (-208, -80))
-        screen.blit(surf, (x, y))
-        return x, x + 32, y, y + 32
+        Game.nb_block += 1
 
-    # affiche sur l'écran un grand bloc de pierre en bronze aux coordonnées (x, y)
-    @staticmethod
-    def bronze(x, y):
-        surf = pygame.Surface((32, 32))
-        surf.blit(pygame.image.load('Assets/Terrain/Terrain (16x16).png'), (-208, -144))
-        screen.blit(surf, (x, y))
-        return x, x + 32, y, y + 32
+        # coordonées du block
+        self.x = x
+        self.y = y
 
-    # affiche sur l'écran un grand bloc de pierre en or aux coordonnées (x, y)
-    @staticmethod
-    def gold(x, y):
-        surf = pygame.Surface((32, 32))
-        surf.blit(pygame.image.load('Assets/Terrain/Terrain (16x16).png'), (-288, -144))
-        screen.blit(surf, (x, y))
-        return x, x + 32, y, y + 32
+        # on ajoute le block à l'ensemble des positions relatives
+        Game.positions[Game.nb_block] = (self.x, self.y, self.x + 32, self.y + 32)
+
+        # materiau du block
+        self.materiau = materiau
+
+        # surface du block
+        self.surf = pygame.Surface((32, 32))
+
+        # materiaux possibles pour le block
+        if self.materiau == 'roc':
+            self.position = (-208, -16)
+        elif self.materiau == 'iron':
+            self.position = (-208, -80)
+        elif self.materiau == 'bronze':
+            self.position = (-208, -144)
+        elif self.materiau == 'gold':
+            self.position = (-288, -144)
+
+        # fonction pour afficher les blocks
+
+    def blit(self):
+        self.surf.blit(pygame.image.load('Assets/Terrain/Terrain (16x16).png'), self.position)
+        screen.blit(self.surf, (self.x, self.y))
+

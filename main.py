@@ -1,6 +1,7 @@
 import pygame
 from game import Game
 from player import Player
+from Terrain.stone.bigSquare import BigSquare
 
 """ COLLISION :
     
@@ -23,14 +24,19 @@ player3 = Player(300, 500, 3)
 player4 = Player(400, 500, 4)
 Game.all_sprites.add(player)
 
-Game.positions['block'] = (100, 501, 132, 533)
+block1 = BigSquare(100, 532, 'roc')
+
 # BOUCLE DE JEU
 while running:
     # Petit lag pour rendre le jeu fluide
     Game.clock.tick(Game.FPS)
 
+    print(Game.positions)
+
     # On affiche le fond d'écran en premier
     screen.blit(background, (0, 0))
+
+    BigSquare.blit(block1)
 
     # On parcours toutes les fonctions de déplacement du joueur 1
     Player.running(player)

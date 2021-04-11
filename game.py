@@ -20,3 +20,6 @@ class Game:
 
     # dictionnaire stockant les différentes positions relatives des sprites du jeu
     positions = {}
+
+    # le nombre de blocks total
+    nb_block = 0

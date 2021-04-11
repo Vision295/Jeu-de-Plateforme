@@ -74,7 +74,7 @@ class Player(pygame.sprite.Sprite):
         self.stop = False
 
         # la direction du joueur
-        self.direction = 'RIGHT'
+        self.direction = 'NONE'
 
         # la hauteur du saut
         self.height = 0
@@ -82,8 +82,8 @@ class Player(pygame.sprite.Sprite):
     # fonction pour animer le joueur lorsqu'il est inactif
     def idle(self, step=1):
 
-        # si le joueur ne bouge pas et ne saute pas mais est orienté vers la droite
-        if self.stop and self.height == 0 and self.direction == 'RIGHT':
+        # si le joueur ne bouge pas et ne saute pas mais est orienté vers la droite ou bien l'objet vient d'être créé
+        if (self.stop and self.height == 0 and self.direction == 'RIGHT') or self.direction == 'NONE':
 
             # on affiche le joueur en fonction de l'anvancement de son inactivité
             self.step += step
