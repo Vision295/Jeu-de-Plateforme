@@ -119,20 +119,20 @@ class Player(pygame.sprite.Sprite):
 
             # on affiche le joueur en train de sauter
             screen.blit(self.jump, (self.x, self.y), (0, 0, 32, 32))
-            self.y -= 5
+            self.y -= 7
 
             # on mesure l'avancement de son saut (sa hauteur)
-            self.height += 5
+            self.height += 7
 
         # si le joueur saute vers la gauche
         elif self.direction == 'LEFT' and self.jumping:
 
             # on affiche le joueur en train de sauter
             screen.blit(pygame.transform.flip(self.jump, True, False), (self.x, self.y), (0, 0, 32, 32))
-            self.y -= 5
+            self.y -= 7
 
             # on mesure l'avancement de son saut (sa hauteur)
-            self.height += 5
+            self.height += 7
 
     # fonction qui permet d'animer le joueur tout en le faisant sauter
     def falling(self):

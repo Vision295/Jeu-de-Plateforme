@@ -26,67 +26,82 @@ Game.all_sprites.add(player)
 Game.positions['block'] = (100, 501, 132, 533)
 # BOUCLE DE JEU
 while running:
-
+    # Petit lag pour rendre le jeu fluide
     Game.clock.tick(Game.FPS)
+
+    # On affiche le fond d'écran en premier
     screen.blit(background, (0, 0))
+
+    # On parcours toutes les fonctions de déplacement du joueur 1
     Player.running(player)
     Player.idle(player)
     Player.jumping(player)
     Player.falling(player)
+
+    # On parcours toutes les fonctions de déplacement du joueur 2
     Player.running(player2)
     Player.idle(player2)
     Player.jumping(player2)
     Player.falling(player2)
+
+    # On parcours toutes les fonctions de déplacement du joueur 3
     Player.running(player3)
     Player.idle(player3)
     Player.jumping(player3)
     Player.falling(player3)
+
+    # On parcours toutes les fonctions de déplacement du joueur 4
     Player.running(player4)
     Player.idle(player4)
     Player.jumping(player4)
     Player.falling(player4)
+
+    # on change les positions des joueurs sur l'écran
     Player.set_position(player)
     Player.set_position(player2)
     Player.set_position(player3)
     Player.set_position(player4)
+
+    # On met à jour l'écran
     pygame.display.flip()
+
+    # On gère les touches pour le joueur 1
     if Game.pressed.get(pygame.K_RIGHT):
         Player.set_right(player)
     elif Game.pressed.get(pygame.K_LEFT):
         Player.set_left(player)
     else:
         Player.set_stop(player)
-
     if Game.pressed.get(pygame.K_UP) and not Player.get_falling(player):
         Player.set_jump(player)
 
+    # On gère les touches pour le joueur 2
     if Game.pressed.get(pygame.K_d):
         Player.set_right(player2)
     elif Game.pressed.get(pygame.K_q):
         Player.set_left(player2)
     else:
         Player.set_stop(player2)
-
     if Game.pressed.get(pygame.K_z) and not Player.get_falling(player2):
         Player.set_jump(player2)
 
+    # On gère les touches pour le joueur 3
     if Game.pressed.get(pygame.K_h):
         Player.set_right(player3)
     elif Game.pressed.get(pygame.K_f):
         Player.set_left(player3)
     else:
         Player.set_stop(player3)
-
     if Game.pressed.get(pygame.K_t) and not Player.get_falling(player3):
         Player.set_jump(player3)
 
+    # On gère les touches pour le joueur 4
     if Game.pressed.get(pygame.K_l):
         Player.set_right(player4)
     elif Game.pressed.get(pygame.K_j):
         Player.set_left(player4)
     else:
         Player.set_stop(player4)
-
     if Game.pressed.get(pygame.K_i) and not Player.get_falling(player4):
         Player.set_jump(player4)
 
