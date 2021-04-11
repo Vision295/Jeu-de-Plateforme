@@ -1,9 +1,18 @@
 import pygame
+from game import Game
 screen = pygame.display.set_mode((1280, 800))
 
 
 # pierres en forme de petit carré
 class SmallSquare:
+    """
+        Classe qui permet de créer des blocs du type: SmallSquare. On y trouve une fonction
+        qui permet de l'afficher. Il peut être de quatres matériaux différents :
+            - roc
+            - iron
+            - gold
+            - bronze
+    """
 
     # positions relatives à l'image Terrain (16*16).png de chaques éléments de pierre rectangulaire
     positions = {
@@ -16,34 +25,36 @@ class SmallSquare:
     # taille du petit carré
     taille = (16, 16)
 
-    # affiche sur l'écran un petit bloc de pierre en pierre aux coordonnées (x, y)
-    @staticmethod
-    def roc(x, y):
-        surf = pygame.Surface((16, 16))
-        surf.blit(pygame.image.load('Assets/Terrain/Terrain (16x16).png'), (-192, -16))
-        screen.blit(surf, (x, y))
-        return x, x + 16, y, y + 16
+    # fonction pour créer un block
+    def __init__(self, x, y, materiau='roc'):
 
-    # affiche sur l'écran un petit bloc de pierre en fer aux coordonnées (x, y)
-    @staticmethod
-    def iron(x, y):
-        surf = pygame.Surface((16, 16))
-        surf.blit(pygame.image.load('Assets/Terrain/Terrain (16x16).png'), (-192, -80))
-        screen.blit(surf, (x, y))
-        return x, x + 16, y, y + 16
+        Game.nb_block += 1
 
-    # affiche sur l'écran un petit bloc de pierre en broner aux coordonnées (x, y)
-    @staticmethod
-    def bronze(x, y):
-        surf = pygame.Surface((16, 16))
-        surf.blit(pygame.image.load('Assets/Terrain/Terrain (16x16).png'), (-192, -144))
-        screen.blit(surf, (x, y))
-        return x, x + 16, y, y + 16
+        # coordonées du block
+        self.x = x
+        self.y = y
 
-    # affiche sur l'écran un petit bloc de pierre en or aux coordonnées (x, y)
-    @staticmethod
-    def gold(x, y):
-        surf = pygame.Surface((16, 16))
-        surf.blit(pygame.image.load('Assets/Terrain/Terrain (16x16).png'), (-272, -144))
-        screen.blit(surf, (x, y))
-        return x, x + 16, y, y + 16
+        # on ajoute le block à l'ensemble des positions relatives
+        Game.positions[Game.nb_block] = (self.x, self.y, self.x + SmallSquare.taille[0], self.y + SmallSquare.taille[1])
+
+        # materiau du block
+        self.materiau = materiau
+
+        # surface du block
+        self.surf = pygame.Surface(SmallSquare.taille)
+
+        # materiaux possibles pour le block
+        if self.materiau == 'roc':
+            self.position = SmallSquare.positions['roc']
+        elif self.materiau == 'iron':
+            self.position = SmallSquare.positions['iron']
+        elif self.materiau == 'bronze':
+            self.position = SmallSquare.positions['bronze']
+        elif self.materiau == 'gold':
+            self.position = SmallSquare.positions['gold']
+
+        # fonction pour afficher les blocks
+
+    def blit(self):
+        self.surf.blit(pygame.image.load('Assets/Terrain/Terrain (16x16).png'), self.position)
+        screen.blit(self.surf, (self.x, self.y))
