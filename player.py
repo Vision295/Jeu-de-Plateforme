@@ -7,6 +7,22 @@ screen = pygame.display.set_mode((3, 3))
 # classe pour gérer le(s) personnage(s) principal(aux)
 class Player(pygame.sprite.Sprite):
 
+    """
+    Classe utilisée pour gérer le joueur. Dans cette classe on trouve les différents
+    mouvements que peut effectuer le joueur :
+        - falling
+        - jumping
+        - running
+        - idle
+    On retrouve aussi des fonctions pour récupérer certaines valeurs et les modifier:
+        - get_falling (permet de savoir si le joueur est en train de tomber)
+        - set_right
+        - set_left
+        - set_jump
+        - set_stop
+        - set_position (permet de mettre à jour la position du joueur dans le dictionnarie position de la classe Game)
+    """
+
     # fonction pour créer un personnage
     def __init__(self, x=100, y=100, choix_perso=1):
 
