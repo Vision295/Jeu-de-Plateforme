@@ -69,9 +69,12 @@ class Player(pygame.sprite.Sprite):
         # le joueur est en train de sauter
         self.jumping = False
         # le joueur est en train de tomber
-        self.falling = True
+        self.falling = False
         # le joueur est inactif
         self.stop = False
+
+        # le nombre de block en dessous du joueur
+        self.block_dessous = 1
 
         # la direction du joueur
         self.direction = 'NONE'
@@ -97,7 +100,7 @@ class Player(pygame.sprite.Sprite):
             screen.blit(pygame.transform.flip(self.idle, True, False), (self.x, self.y),
                         ((self.step % 11) * 32, 0, 32, 32))
 
-    # fonction pour animer le joueur tout en le faisant courrir todo: créer des collisions et bloquer le joueur
+    # fonction pour animer le joueur tout en le faisant courrir
     def running(self, step=1):
         # avancement de la course
         self.step += step
@@ -107,25 +110,40 @@ class Player(pygame.sprite.Sprite):
 
             # si le joueur saute pendant qu'il essaie de courrir
             if self.jumping or self.falling:
-                self.x += 3
+                self.x += 4
 
             # si le joueur court simplement
             else:
                 screen.blit(self.run, (self.x, self.y), ((self.step % 12) * 32, 0, 32, 32))
                 self.x += 5
 
+            # On parcours le dictionnaire à la recherche d'un obstacle
+            for i in range(Game.nb_block):
+                if self.x + 20 <= Game.positions[i + 1][0] <= self.x + 23 and (self.y + 10 < Game.positions[i + 1][1] < self.y + 32 or self.y + 10 < Game.positions[i + 1][3] < self.y + 32):
+                    if self.jumping or self.falling:
+                        self.x -= 4
+                    else:
+                        self.x -= 5
+
         # si le joueur court vers la gauche
         elif self.direction == 'LEFT' and not self.stop:
 
             # si le joueur saute pendant qu'il essaie de courrir
             if self.jumping or self.falling:
-                self.x -= 3
+                self.x -= 4
 
             # si le joueur court simplement
             else:
-                screen.blit(pygame.transform.flip(self.run, True, False), (self.x, self.y),
-                            ((self.step % 12) * 32, 0, 32, 32))
+                screen.blit(pygame.transform.flip(self.run, True, False), (self.x, self.y), ((self.step % 12) * 32, 0, 32, 32))
                 self.x -= 5
+
+            # On parcours le dictionnaire à la recherche d'un obstacle
+            for i in range(Game.nb_block):
+                if self.x + 8 <= Game.positions[i + 1][2] <= self.x + 12 and (self.y + 10 < Game.positions[i + 1][1] < self.y + 32 or self.y + 10 < Game.positions[i + 1][3] < self.y + 32):
+                    if self.jumping or self.falling:
+                        self.x += 4
+                    else:
+                        self.x += 5
 
     # fonction pour animer le joueur tout en le faisant sauter
     def jumping(self):
@@ -135,42 +153,62 @@ class Player(pygame.sprite.Sprite):
 
             # on affiche le joueur en train de sauter
             screen.blit(self.jump, (self.x, self.y), (0, 0, 32, 32))
-            self.y -= 7
+            self.y -= 8
 
             # on mesure l'avancement de son saut (sa hauteur)
-            self.height += 7
+            self.height += 8
 
         # si le joueur saute vers la gauche
-        elif self.direction == 'LEFT' and self.jumping:
+        elif (self.direction == 'LEFT' or self.direction == 'NONE') and self.jumping:
 
             # on affiche le joueur en train de sauter
             screen.blit(pygame.transform.flip(self.jump, True, False), (self.x, self.y), (0, 0, 32, 32))
-            self.y -= 7
+            self.y -= 8
 
             # on mesure l'avancement de son saut (sa hauteur)
-            self.height += 7
+            self.height += 8
+
+        # On parcours le dictionnaire à la recherche d'un obstacle
+        for i in range(Game.nb_block):
+            if self.y > Game.positions[i + 1][1] >= self.y - 8 and (Game.positions[i + 1][0] <= self.x + 8 <= Game.positions[i + 1][2] or Game.positions[i + 1][0] <= self.x + 24 <= Game.positions[i + 1][2] or (self.x + 8 <= Game.positions[i + 1][0] and self.x + 24 >= Game.positions[i + 1][2])):
+                self.jumping = False
+                self.height = 80
 
     # fonction qui permet d'animer le joueur tout en le faisant sauter
     def falling(self):
 
+        if self.block_dessous == 0 and not self.falling and not self.jumping:
+            self.falling = True
+            self.jumping = False
+            self.stop = False
+            self.height += 8
+        else:
+            self.block_dessous = 0
+
+        # On parcours le dictionnaire à la recherche d'un obstacle
+        for i in range(Game.nb_block):
+            if self.y + 24 < Game.positions[i + 1][1] <= self.y + 32 and (Game.positions[i + 1][0] <= self.x + 8 <= Game.positions[i + 1][2] or Game.positions[i + 1][0] <= self.x + 24 <= Game.positions[i + 1][2] or (self.x + 8 <= Game.positions[i + 1][0] and self.x + 24 >= Game.positions[i + 1][2])):
+                self.block_dessous += 1
+                self.height = 0
+
         # si le joueur tombe vers la droite
-        if self.direction == 'RIGHT' and self.falling and self.height > 0:
+        if (self.direction == 'RIGHT' or self.direction == 'NONE') and self.falling and self.height > 0:
 
             # on affiche le joueur en train de tomber
             screen.blit(self.fall, (self.x, self.y), (0, 0, 32, 32))
-            self.y += 7
-            self.height -= 7
+            self.y += 8
+            self.height -= 8
 
         # si le joueur tombe vers la gauche
         elif self.direction == 'LEFT' and self.falling and self.height > 0:
 
             # on affiche le joueur en train de tomber
             screen.blit(pygame.transform.flip(self.fall, True, False), (self.x, self.y), (0, 0, 32, 32))
-            self.y += 7
-            self.height -= 7
+            self.y += 8
+            self.height -= 8
 
         # si le joueur a atteint la hauteur maximum de son saut alors il tombe
-        if self.height == 70:
+        if self.height == 80:
             self.falling = True
             self.jumping = False
 
@@ -212,7 +250,8 @@ class Player(pygame.sprite.Sprite):
 
     # fonction pour changer l'état de saut du joueur à True
     def set_jump(self):
-        self.jumping = True
+        if self.block_dessous > 0:
+            self.jumping = True
 
     # fonction pour savoir si le joueur est en train de tomber
     def get_falling(self):

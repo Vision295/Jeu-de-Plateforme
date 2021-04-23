@@ -80,7 +80,21 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Terrain\block.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Terrain\stone\bigSquare.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\affichage.py">
           <value>
             <Attribute>
               <option name="separator" value="," />

@@ -1,10 +1,7 @@
 import pygame
 from game import Game
 from player import Player
-from Terrain.stone.bigSquare import BigSquare
-from Terrain.stone.platform import Platform
-from Terrain.stone.smallSquare import SmallSquare
-from Terrain.stone.rect import Rect
+from Terrain.block import Block
 
 """ COLLISION :
     
@@ -22,30 +19,23 @@ background.fill((0, 0, 0))
 # Variable utilisée pour faire tourner le jeu en boucle
 running = True
 player = Player(100, 500, 1)
-player2 = Player(200, 500, 2)
-player3 = Player(300, 500, 3)
-player4 = Player(400, 500, 4)
+player2 = Player(600, 500, 2)
+player3 = Player(700, 500, 3)
+player4 = Player(800, 500, 4)
 Game.all_sprites.add(player)
+liste = [Block(300, 500, Block.block_coord('stone', 'smallSquare', 'roc')), Block(350, 450, Block.block_coord('stone', 'smallSquare', 'roc'))]
 
-block1 = BigSquare(100, 532, 'roc')
-block2 = Platform(200, 532, 'roc')
-block3 = SmallSquare(300, 532, 'roc')
-block4 = SmallSquare(316, 532, 'iron')
-block5 = Rect(400, 532, True, 'iron')
+for i in range(22):
+    liste.append(Block((i + 1) * 44, 532, Block.block_coord('grass', 'green')))
 # BOUCLE DE JEU
 while running:
     # Petit lag pour rendre le jeu fluide
     Game.clock.tick(Game.FPS)
-
-    print(Game.positions)
-
+    print(player.y + 25, player.y + 35, player.x, player.x + 32, player.block_dessous)
     # On affiche le fond d'écran en premier
     screen.blit(background, (0, 0))
-    block2.blit()
-    block1.blit()
-    block3.blit()
-    block4.blit()
-    block5.blit()
+    for i in range(len(liste)):
+        liste[i].blit()
     # On parcours toutes les fonctions de déplacement du joueur 1
     Player.running(player)
     Player.idle(player)
