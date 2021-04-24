@@ -3,9 +3,6 @@ from game import Game
 from player import Player
 from Terrain.block import Block
 
-""" COLLISION :
-    
-"""
 
 # INITIALISATION DE PYGAME
 pygame.init()
@@ -27,15 +24,17 @@ liste = [Block(300, 500, Block.block_coord('stone', 'smallSquare', 'roc')), Bloc
 
 for i in range(22):
     liste.append(Block((i + 1) * 44, 532, Block.block_coord('grass', 'green')))
+
 # BOUCLE DE JEU
 while running:
     # Petit lag pour rendre le jeu fluide
     Game.clock.tick(Game.FPS)
-    print(player.y + 25, player.y + 35, player.x, player.x + 32, player.block_dessous)
+    print(player.x, player.y, player.x + 32, player.y + 32, Game.positions)
     # On affiche le fond d'écran en premier
-    screen.blit(background, (0, 0))
+    Game.lvl(1)
     for i in range(len(liste)):
         liste[i].blit()
+
     # On parcours toutes les fonctions de déplacement du joueur 1
     Player.running(player)
     Player.idle(player)

@@ -4,7 +4,7 @@ from game import Game
 screen = pygame.display.set_mode((3, 3))
 
 
-# classe pour gérer le(s) personnage(s) principal(aux)
+# classe pour gérer le(s) personnage(s) principal(aux) todo: spawn points, win and lose (death and checkpoints, ...)
 class Player(pygame.sprite.Sprite):
 
     """
@@ -119,7 +119,7 @@ class Player(pygame.sprite.Sprite):
 
             # On parcours le dictionnaire à la recherche d'un obstacle
             for i in range(Game.nb_block):
-                if self.x + 20 <= Game.positions[i + 1][0] <= self.x + 23 and (self.y + 10 < Game.positions[i + 1][1] < self.y + 32 or self.y + 10 < Game.positions[i + 1][3] < self.y + 32):
+                if self.x + 15 < Game.positions[i + 1][0] <= self.x + 25 and (self.y < Game.positions[i + 1][1] < self.y + 32 or self.y < Game.positions[i + 1][3] < self.y + 32):
                     if self.jumping or self.falling:
                         self.x -= 4
                     else:
@@ -139,7 +139,7 @@ class Player(pygame.sprite.Sprite):
 
             # On parcours le dictionnaire à la recherche d'un obstacle
             for i in range(Game.nb_block):
-                if self.x + 8 <= Game.positions[i + 1][2] <= self.x + 12 and (self.y + 10 < Game.positions[i + 1][1] < self.y + 32 or self.y + 10 < Game.positions[i + 1][3] < self.y + 32):
+                if self.x + 8 <= Game.positions[i + 1][2] <= self.x + 12 and (self.y < Game.positions[i + 1][1] < self.y + 32 or self.y < Game.positions[i + 1][3] < self.y + 32):
                     if self.jumping or self.falling:
                         self.x += 4
                     else:
@@ -212,7 +212,7 @@ class Player(pygame.sprite.Sprite):
             self.falling = True
             self.jumping = False
 
-        # si le joueur a atteint la fin de sa chut (temporaire)
+        # si le joueur a atteint la fin de sa chut
         if self.height == 0:
             self.jumping = False
             self.falling = False

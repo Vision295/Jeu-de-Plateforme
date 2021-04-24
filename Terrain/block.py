@@ -16,14 +16,19 @@ class Block:
 
     # fonction qui renvoie la position d'un type de block
     @staticmethod
-    def block_coord(materiau, forme, matiere='roc', rotation=False):
+    def block_coord(materiau, forme_ou_couleur, matiere_ou_rotation='roc', rotation=False):
         if materiau == 'stone':
-            if forme == 'rect':
-                return BlockInfo.blocks['stone'][forme][rotation][matiere]
+            if forme_ou_couleur == 'rect':
+                return BlockInfo.blocks['stone'][forme_ou_couleur][rotation][matiere_ou_rotation]
             else:
-                return BlockInfo.blocks['stone'][forme][matiere]
+                return BlockInfo.blocks['stone'][forme_ou_couleur][matiere_ou_rotation]
+        elif materiau == 'stone2' or materiau == 'wood':
+            if forme_ou_couleur == 'rect' or forme_ou_couleur == 'small_rect':
+                return BlockInfo.blocks[materiau][forme_ou_couleur][matiere_ou_rotation]
+            else:
+                return BlockInfo.blocks[materiau][forme_ou_couleur]
         else:
-            return BlockInfo.blocks[materiau][forme]
+            return BlockInfo.blocks[materiau][forme_ou_couleur]
 
     # fonction pour créer un block
     def __init__(self, x, y, block_coord):
@@ -45,7 +50,8 @@ class Block:
         self.surf = pygame.Surface(self.taille)
 
         # on ajoute le block à l'ensemble des positions relatives
-        Game.positions[Game.nb_block] = (self.x, self.y, self.x + self.taille[0], self.y + self.taille[1])
+        if block_coord != ((0, 0), (16, 8)) or block_coord !=  ((0, -16), (8, 16)) or block_coord != ((0, -8), (8, 8)) or block_coord != ((-8, -33), (6, 6)) or block_coord != ((-8, -64), (32, 9)) or block_coord != ((0, -72), (9, 32)) or block_coord != ((-8, -100), (8, 4)) or block_coord != ((-8, -72), (4, 8)) or block_coord != ((0, -64), (9, 9)):
+            Game.positions[Game.nb_block] = (self.x, self.y, self.x + self.taille[0], self.y + self.taille[1])
 
     # fonction pour afficher les blocks
     def blit(self):
