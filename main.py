@@ -15,21 +15,46 @@ background.fill((0, 0, 0))
 # INITIALISATION DE TOUTES LES VARIABLES
 # Variable utilisée pour faire tourner le jeu en boucle
 running = True
-player = Player(100, 500, 1)
-player2 = Player(600, 500, 2)
-player3 = Player(700, 500, 3)
-player4 = Player(800, 500, 4)
+player = Player(1, 628, 1)
 Game.all_sprites.add(player)
-liste = [Block(300, 500, Block.block_coord('stone', 'smallSquare', 'roc')), Block(350, 450, Block.block_coord('stone', 'smallSquare', 'roc'))]
+liste = [
+    Block(0, 660, Block.block_coord('grass', 'green')),
+    Block(44, 616, Block.block_coord('grass', 'green')),
+    Block(44, 660, Block.block_coord('dirt', 'green')),
+    Block(44, 680, Block.block_coord('dirt', 'green')),
+    Block(88, 384, Block.block_coord('grass', 'green')),
+    Block(132, 192, Block.block_coord('grass', 'green')),
+]
+for i in range(12):
+    liste.append(Block(88, 372 + 26 * (i + 1), Block.block_coord('dirt', 'green')),)
+for i in range(24):
+    liste.append(Block(132, 192 + 26 * (i + 1), Block.block_coord('dirt', 'green')),)
 
-for i in range(22):
-    liste.append(Block((i + 1) * 44, 532, Block.block_coord('grass', 'green')))
-
+liste.append(Block(72, 600, Block.block_coord('stone', 'rect', 'roc')))
+liste.append(Block(72, 552, Block.block_coord('stone', 'rect', 'roc', True)))
+liste.append(Block(88, 568, Block.block_coord('stone', 'bigSquare', 'roc')))
+liste.append(Block(72, 520, Block.block_coord('stone', 'smallSquare', 'roc')))
+liste.append(Block(72, 536, Block.block_coord('stone', 'smallSquare', 'roc')))
+liste.append(Block(72, 504, Block.block_coord('stone', 'smallSquare', 'roc')))
+liste.append(Block(104, 504, Block.block_coord('stone', 'smallSquare', 'roc', True)))
+liste.append(Block(72, 488, Block.block_coord('stone', 'rect', 'roc')))
+liste.append(Block(0, 544, Block.block_coord('stone', 'platform', 'roc')))
+liste.append(Block(0, 448, Block.block_coord('stone', 'platform', 'roc')))
+liste.append(Block(40, 400, Block.block_coord('stone', 'platform', 'roc')))
+liste.append(Block(116, 368, Block.block_coord('stone', 'smallSquare', 'roc')))
+liste.append(Block(0, 320, Block.block_coord('stone', 'bigSquare', 'roc')))
+liste.append(Block(32, 336, Block.block_coord('stone', 'bigSquare', 'roc')))
+liste.append(Block(0, 304, Block.block_coord('stone', 'rect', 'roc')))
+liste.append(Block(48, 320, Block.block_coord('stone', 'rect', 'roc')))
+liste.append(Block(48, 304, Block.block_coord('stone', 'smallSquare', 'roc')))
+liste.append(Block(48, 256, Block.block_coord('stone', 'rect', 'roc', True)))
+liste.append(Block(116, 272, Block.block_coord('stone', 'rect', 'roc')))
+liste.append(Block(100, 240, Block.block_coord('stone', 'bigSquare', 'roc')))
+liste.append(Block(84, 224, Block.block_coord('stone', 'rect', 'roc')))
 # BOUCLE DE JEU
 while running:
     # Petit lag pour rendre le jeu fluide
     Game.clock.tick(Game.FPS)
-    print(player.x, player.y, player.x + 32, player.y + 32, Game.positions)
     # On affiche le fond d'écran en premier
     Game.lvl(1)
     for i in range(len(liste)):
@@ -40,30 +65,11 @@ while running:
     Player.idle(player)
     Player.jumping(player)
     Player.falling(player)
-
-    # On parcours toutes les fonctions de déplacement du joueur 2
-    Player.running(player2)
-    Player.idle(player2)
-    Player.jumping(player2)
-    Player.falling(player2)
-
-    # On parcours toutes les fonctions de déplacement du joueur 3
-    Player.running(player3)
-    Player.idle(player3)
-    Player.jumping(player3)
-    Player.falling(player3)
-
-    # On parcours toutes les fonctions de déplacement du joueur 4
-    Player.running(player4)
-    Player.idle(player4)
-    Player.jumping(player4)
-    Player.falling(player4)
+    Player.limits(player)
+    Player.spike(player)
 
     # on change les positions des joueurs sur l'écran
     Player.set_position(player)
-    Player.set_position(player2)
-    Player.set_position(player3)
-    Player.set_position(player4)
 
     # On met à jour l'écran
     pygame.display.flip()
@@ -77,36 +83,6 @@ while running:
         Player.set_stop(player)
     if Game.pressed.get(pygame.K_UP) and not Player.get_falling(player):
         Player.set_jump(player)
-
-    # On gère les touches pour le joueur 2
-    if Game.pressed.get(pygame.K_d):
-        Player.set_right(player2)
-    elif Game.pressed.get(pygame.K_q):
-        Player.set_left(player2)
-    else:
-        Player.set_stop(player2)
-    if Game.pressed.get(pygame.K_z) and not Player.get_falling(player2):
-        Player.set_jump(player2)
-
-    # On gère les touches pour le joueur 3
-    if Game.pressed.get(pygame.K_h):
-        Player.set_right(player3)
-    elif Game.pressed.get(pygame.K_f):
-        Player.set_left(player3)
-    else:
-        Player.set_stop(player3)
-    if Game.pressed.get(pygame.K_t) and not Player.get_falling(player3):
-        Player.set_jump(player3)
-
-    # On gère les touches pour le joueur 4
-    if Game.pressed.get(pygame.K_l):
-        Player.set_right(player4)
-    elif Game.pressed.get(pygame.K_j):
-        Player.set_left(player4)
-    else:
-        Player.set_stop(player4)
-    if Game.pressed.get(pygame.K_i) and not Player.get_falling(player4):
-        Player.set_jump(player4)
 
     # On utilise les inputs avec pygame
     for event in pygame.event.get():

@@ -38,7 +38,7 @@ class BlockInfo:
             },
             'square': ((0, -8), (9, 9)),
             'small_square':  ((-8, -33), (7, 7))
-       },
+        },
         'wood': {
             'rect': {
                 True: ((-8, -64), (32, 9)),

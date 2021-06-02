@@ -64,7 +64,9 @@ class Player(pygame.sprite.Sprite):
 
         # coordonnées du joueur (du coin suppérieur droit du rectangle)
         self.x = x
+        self.x_init = x
         self.y = y
+        self.y_init = y
 
         # le joueur est en train de sauter
         self.jumping = False
@@ -233,6 +235,20 @@ class Player(pygame.sprite.Sprite):
         elif self.choix_perso == 4:
             # ajout des positions à la liste des positions
             Game.positions['player4'] = (self.x, self.y, self.x + 32, self.y + 32)
+
+    # fonction qui permet de relancer le niveau lorsque le joueur tombe
+    def limits(self):
+
+        # si le perso sort du cadre
+        if self.y > 704:
+            self.y = self.y_init
+            self.x = self.x_init
+
+        if self.x > 1056:
+            self.x -= 6
+
+        if self.x < 0:
+            self.x += 6
 
     # fonction pour changer la direction du joueur en LEFT
     def set_left(self):
